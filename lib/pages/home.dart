@@ -25,17 +25,57 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.amber,
+              ),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/avatar.jpg'),
+                  ),
+                  Text(
+                    'b22ee064@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                // Handle drawer item tap
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('MailM'),
         backgroundColor: Colors.redAccent,
         centerTitle: true,
-        leading: IconButton(
-          padding: EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
-          icon: CircleAvatar(
-            backgroundImage: AssetImage('assets/avatar.jpg'),
-          ),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   padding: EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+        //   icon: CircleAvatar(
+        //     backgroundImage: AssetImage('assets/avatar.jpg'),
+        //   ),
+        //   onPressed: () {
+        //     Drawer;
+        //   },
+        // ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.refresh),
