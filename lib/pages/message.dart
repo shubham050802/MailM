@@ -8,6 +8,8 @@ class Message extends StatefulWidget {
 
 class _MessageState extends State<Message> {
   List message = [];
+  late int index;
+  String s = "";
   Reader reader = Reader();
   @override
   void initState() {
@@ -15,13 +17,14 @@ class _MessageState extends State<Message> {
     reader.loadCSV().then((value) {
       setState(() {
         message = value;
+        s = message[index][1];
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final int index = ModalRoute.of(context)?.settings.arguments as int;
+    index = ModalRoute.of(context)?.settings.arguments as int;
     return Scaffold(
       appBar: AppBar(
         title: Text('Message'),
@@ -30,7 +33,7 @@ class _MessageState extends State<Message> {
         padding: EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            Text(message[index][1]),
+            Text(s),
           ],
         ),
       ),
